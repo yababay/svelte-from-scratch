@@ -11,11 +11,12 @@ node_modules
 .env.*
 !.env.example
 !.env.test
+.venv
 
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# Me
-/.tmp
+# Custom
+.tmp
 
