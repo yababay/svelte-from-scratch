@@ -1,0 +1,26 @@
+- name: Prepare directory
+  ansible.builtin.file:
+    path: "{{ app_path }}"
+    state: absent
+- name: Checkout a github repo and use refspec to fetch all pull requests
+  ansible.builtin.git:
+    repo: https://github.com/yababay/svelte-from-scratch.git
+    dest: "{{ app_path }}"
+    refspec: '+refs/pull/*:refs/heads/*'
+- name: Use development branch (not main)
+  command: 
+    chdir: "{{ app_path }}"
+    cmd: git checkout development
+- name: Rename remote as scratch, not origin
+  command: 
+    chdir: "{{ app_path }}"
+    cmd: git remote rename origin scratch
+- name: Merge static files
+  command: 
+    chdir: "{{ app_path }}"
+    cmd: git merge scratch/feature/001/static -m "merging static files"
+- name: Merge library
+  command: 
+    chdir: "{{ app_path }}"
+    cmd: git merge scratch/feature/002/library -m "merging library"
+
