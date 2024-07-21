@@ -7,10 +7,10 @@
     repo: https://github.com/yababay/svelte-from-scratch.git
     dest: "{{ app_path }}"
     refspec: '+refs/pull/*:refs/heads/*'
-- name: Use scratch branch, not main
+- name: Use from-scratch branch, not main
   command: 
     chdir: "{{ app_path }}"
-    cmd: git checkout scratch
+    cmd: git checkout from-scratch
 - name: Rename remote as scratch, not origin
   command: 
     chdir: "{{ app_path }}"
