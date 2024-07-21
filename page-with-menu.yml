@@ -1,0 +1,22 @@
+---
+# This playbook builds empty svelte page
+- name: Empty page
+  hosts: 127.0.0.1
+  connection: local
+  vars:
+    app_path: "../from-scratch"
+
+  tasks:
+    - include_tasks: modules/scratch.yml
+      vars:
+        app_path: "../from-scratch"
+
+    - name: Merge config files
+      command: 
+        chdir: "{{ app_path }}"
+        cmd: git merge scratch/feature/030/config-empty -m "merging config files"
+    - name: Merge empty layout
+      command: 
+        chdir: "{{ app_path }}"
+        cmd: git merge scratch/feature/061/layout-with-menu -m "merging layout with menu"
+

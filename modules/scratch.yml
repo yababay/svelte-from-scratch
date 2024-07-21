@@ -2,12 +2,12 @@
   ansible.builtin.file:
     path: "{{ app_path }}"
     state: absent
-- name: Checkout a github repo and use refspec to fetch all pull requests
+- name: Checkout the scratch repo and use refspec to fetch all pull requests
   ansible.builtin.git:
     repo: https://github.com/yababay/svelte-from-scratch.git
     dest: "{{ app_path }}"
     refspec: '+refs/pull/*:refs/heads/*'
-- name: Use development branch (not main)
+- name: Use development branch, not main
   command: 
     chdir: "{{ app_path }}"
     cmd: git checkout development
