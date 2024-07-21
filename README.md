@@ -24,13 +24,6 @@
 
 ## Сборка с помощью `ansible`
 
-Перейдите на ветку `feature/999/ansible`:
-
-```
-git checkout origin/feature/999/ansible
-
-```
-
 Необходимо установить `python`-окружение:
 
 ```
