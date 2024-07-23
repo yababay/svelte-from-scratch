@@ -1,4 +1,6 @@
 node_modules
+# I use workspaces, no package-lock.json here
+package-lock.json
 
 # Output
 .output
