@@ -1,4 +1,5 @@
-import { type OrderStatusType, type LightItem } from "$lib/types";
+import { type OrderStatusType } from "$lib/types/yandex";
+import { type LightItem } from "$lib/types/model";
 
 const getStatusDescription = (status: OrderStatusType) => {
     switch(status) {
