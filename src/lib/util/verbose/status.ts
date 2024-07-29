@@ -1,7 +1,6 @@
-import { type OrderStatusType } from "$lib/types/yandex";
-import { type LightItem } from "$lib/types/model";
+import type { OrderStatusType } from "$lib/types/yandex"
 
-const getStatusDescription = (status: OrderStatusType) => {
+export const getStatusDescription = (status: OrderStatusType) => {
     switch(status) {
         case 'CANCELLED': return 'отменен'
         case 'DELIVERED': return 'получен покупателем'
@@ -16,14 +15,4 @@ const getStatusDescription = (status: OrderStatusType) => {
         case 'RETURNED': return 'возвращен полностью'
         default: return `не определен (${status})`
     }
-}
-
-export const getMessageFromOrder = (orderId: number, status: OrderStatusType, suffix?: {buyerTotal: number, items: LightItem[], withPrice?: boolean}) => {
-    let message = `Заказ ${orderId} ${getStatusDescription(status)}.`
-    if(!suffix) return message
-    const { buyerTotal, items, withPrice } = suffix
-    const stuff = items.map(({offerId, count}) => `${offerId} (${count})`).join(', ')
-    message = `${message} Состав: ${stuff}.` 
-    if(withPrice) message += ` Сумма: ${buyerTotal}  ₽.`
-    return message
 }
