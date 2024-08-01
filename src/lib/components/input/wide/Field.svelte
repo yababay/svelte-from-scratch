@@ -1,11 +1,11 @@
 <script lang="ts">
     export let
         name: string,
-        placeholder: string,
         label: string,
+        placeholder: string = '',
         width: number = 25,
         disabled = false,
-        value = '',
+        value: string | number = '',
         type = 'text'
 
     const id = `id-for-${name}`
