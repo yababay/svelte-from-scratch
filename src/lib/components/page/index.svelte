@@ -17,11 +17,11 @@
 </script>
 
 <Table {columns}>
-    {#each rows as {offerId, name, pictures, basicPrice}, i}
+    {#each rows as {offerId, name, pictures, basicPrice, isHidden}, i}
         <tr>
             <td class="text-center"><Preview link={pictures[0]} alt={offerId} /></td>
-            <td><p>{name} ({offerId})</p></td>
-            <td class="text-center"><p>{basicPrice} ₽</p></td>
+            <td><p class:text-body-tertiary={isHidden}>{name} ({offerId})</p></td>
+            <td class="text-center"><p class:text-body-tertiary={isHidden}>{basicPrice} ₽</p></td>
             <td class="text-center"><Tools {num} id={offerId} /></td>
         </tr>
     {/each}
